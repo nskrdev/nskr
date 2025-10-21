@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 
 export type SocialLink = {
   /** React icon component or image URL (absolute or path under /public) shown beside the title. */

@@ -1,15 +1,39 @@
-import React from "react";
-import {
-  SiPython, SiTypescript, SiJavascript, SiCplusplus, SiC, SiR,
-  SiTensorflow, SiKeras, SiScikitlearn, SiOpencv, SiPandas, SiNumpy,
-  SiFlask, SiNodedotjs, SiReact, SiNextdotjs, SiHtml5, SiCss3,
-  SiDocker, SiKubernetes, SiLinux, SiGnubash, SiAmazon,
-  SiGit, SiGithub, SiJupyter,
-  SiSlack, SiNotion, SiGooglesheets, SiOracle
-} from "react-icons/si";
-import { FaTerminal } from "react-icons/fa";
-import { VscCode } from "react-icons/vsc";
 import Image from "next/image";
+import React from "react";
+import { FaTerminal } from "react-icons/fa";
+import {
+  SiAmazon,
+  SiC,
+  SiCplusplus,
+  SiCss3,
+  SiDocker,
+  SiFlask,
+  SiGit,
+  SiGithub,
+  SiGnubash,
+  SiGooglesheets,
+  SiHtml5,
+  SiJavascript,
+  SiJupyter,
+  SiKeras,
+  SiKubernetes,
+  SiLinux,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNotion,
+  SiNumpy,
+  SiOpencv,
+  SiOracle,
+  SiPandas,
+  SiPython,
+  SiR,
+  SiReact,
+  SiScikitlearn,
+  SiSlack,
+  SiTensorflow,
+  SiTypescript,
+} from "react-icons/si";
+import { VscCode } from "react-icons/vsc";
 
 import { SimpleTooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -30,7 +54,7 @@ const PersonalLogo = ({ className }: { className?: string }) => (
 );
 
 // Map tech stack keys to react-icons
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   // Programming Languages
   python: SiPython,
   ts: SiTypescript,

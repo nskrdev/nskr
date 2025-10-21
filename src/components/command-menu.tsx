@@ -36,9 +36,9 @@ import { useSound } from "@/hooks/use-sound";
 import { cn } from "@/lib/utils";
 import { copyText } from "@/utils/copy";
 
-import { RedMark, getMarkSVG } from "./red-mark";
-import { getWordmarkSVG } from "./red-wordmark";
 import { Icons } from "./icons";
+import { getMarkSVG,RedMark } from "./red-mark";
+import { getWordmarkSVG } from "./red-wordmark";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 

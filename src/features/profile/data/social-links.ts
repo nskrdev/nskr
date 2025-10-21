@@ -1,6 +1,7 @@
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+
 import type { SocialLink } from "../types/social-links";
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
-import { SiLeetcode } from 'react-icons/si';
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
