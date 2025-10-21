@@ -36,6 +36,7 @@
     "generate-libphonenumber-metadata": "libphonenumber-metadata-generator ./src/assets/libphonenumber.metadata.json --countries VN --extended",
     "upgrade:next": "npx @next/codemod@latest upgrade latest",
     "upgrade:tailwind": "npx @tailwindcss/upgrade@latest",
+    "test": "echo \"No tests specified\"",
     "prepare": "husky"
   },
   "dependencies": {
@@ -116,5 +117,6 @@
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=9"
-  }
+  },
+  "packageManager": "pnpm@10.10.0"
 }
