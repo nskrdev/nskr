@@ -38,7 +38,14 @@ export async function GET() {
 
 async function getVCardPhoto(url: string) {
   try {
-    const res = await fetch(url);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+
+    const res = await fetch(url, {
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
 
     if (!res.ok) {
       return null;
@@ -61,7 +68,8 @@ async function getVCardPhoto(url: string) {
       image,
       mine: "jpeg",
     };
-  } catch {
+  } catch (error) {
+    console.warn('Failed to fetch VCard photo:', error);
     return null;
   }
 }
