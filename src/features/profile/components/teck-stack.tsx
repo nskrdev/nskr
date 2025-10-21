@@ -54,7 +54,7 @@ const PersonalLogo = ({ className }: { className?: string }) => (
 );
 
 // Map tech stack keys to react-icons
-const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>> | React.ComponentType<{ className?: string }>> = {
   // Programming Languages
   python: SiPython,
   ts: SiTypescript,

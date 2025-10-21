@@ -37,7 +37,7 @@ import { cn } from "@/lib/utils";
 import { copyText } from "@/utils/copy";
 
 import { Icons } from "./icons";
-import { getMarkSVG,RedMark } from "./red-mark";
+import { getMarkSVG, RedMark } from "./red-mark";
 import { getWordmarkSVG } from "./red-wordmark";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
@@ -111,7 +111,10 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
   title: item.title,
   href: item.href,
-  iconImage: item.icon,
+  ...(typeof item.icon === "string"
+    ? { iconImage: item.icon }
+    : { icon: item.icon as React.ComponentType<LucideProps> }
+  ),
   openInNewTab: true,
 }));
 
