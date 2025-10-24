@@ -146,14 +146,7 @@ export const PROJECTS: Project[] = [
       start: "10.2025",
     },
     link: "https://github.com/basecamp/omarchy",
-    skills: [
-      "Open Source",
-      "Bash",
-      "Linux",
-      "dmenu",
-      "Git",
-      "Collaboration",
-    ],
+    skills: ["Open Source", "Bash", "Linux", "dmenu", "Git", "Collaboration"],
     description: `Active contributor to Omarchy open-source Linux menu system developed by Basecamp.
 
 **Contributions:**
@@ -366,13 +359,7 @@ export const PROJECTS: Project[] = [
       end: "06.2025",
     },
     link: "https://github.com/nskrdev",
-    skills: [
-      "Node.js",
-      "npm",
-      "JavaScript",
-      "Package Management",
-      "Debugging",
-    ],
+    skills: ["Node.js", "npm", "JavaScript", "Package Management", "Debugging"],
     description: `Hands-on learning with Node.js ecosystem and package management.
 
 - Set up Node.js development environment on Arch Linux

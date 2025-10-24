@@ -1,9 +1,12 @@
 import { SITE_INFO } from "@/config/site";
-import { getAllPosts } from "@/features/blog/data/posts";
+import { getAllPosts } from "@/features/blog/actions";
 
-const allPosts = getAllPosts();
+export const dynamic = "force-static";
 
-const content = `# nskr.me
+export async function GET() {
+  const allPosts = await getAllPosts();
+
+  const content = `# nskr.me
 
 > A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
 
@@ -18,9 +21,6 @@ const content = `# nskr.me
 ${allPosts.map((item) => `- [${item.metadata.title}](${SITE_INFO.url}/blog/${item.slug}.mdx): ${item.metadata.description}`).join("\n")}
 `;
 
-export const dynamic = "force-static";
-
-export async function GET() {
   return new Response(content, {
     headers: {
       "Content-Type": "text/markdown;charset=utf-8",

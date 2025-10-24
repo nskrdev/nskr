@@ -1,10 +1,14 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { DesktopNav } from "@/components/desktop-nav";
 import { NavItemGitHub } from "@/components/nav-item-github";
 import { MAIN_NAV } from "@/config/site";
-import { getAllPosts } from "@/features/blog/data/posts";
+import { getAllPosts } from "@/features/blog/actions";
+import type { Post } from "@/features/blog/types/post";
 import { cn } from "@/lib/utils";
 
 import { SiteHeaderMark } from "./site-header-mark";
@@ -24,7 +28,11 @@ const MobileNav = dynamic(() =>
 );
 
 export function SiteHeader() {
-  const posts = getAllPosts();
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    getAllPosts().then(setPosts);
+  }, []);
 
   return (
     <SiteHeaderWrapper

@@ -1,3 +1,5 @@
+"use server";
+
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -38,7 +40,7 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getAllPosts() {
+export async function getAllPosts() {
   return getMDXData(path.join(process.cwd(), "src/features/blog/content")).sort(
     (a, b) =>
       new Date(b.metadata.createdAt).getTime() -
@@ -46,15 +48,17 @@ export function getAllPosts() {
   );
 }
 
-export function getPostBySlug(slug: string) {
-  return getAllPosts().find((post) => post.slug === slug);
+export async function getPostBySlug(slug: string) {
+  const posts = await getAllPosts();
+  return posts.find((post) => post.slug === slug);
 }
 
-export function getPostsByCategory(category: string) {
-  return getAllPosts().filter((post) => post.metadata?.category === category);
+export async function getPostsByCategory(category: string) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.metadata?.category === category);
 }
 
-export function findNeighbour(posts: Post[], slug: string) {
+export async function findNeighbour(posts: Post[], slug: string) {
   const len = posts.length;
 
   for (let i = 0; i < len; ++i) {

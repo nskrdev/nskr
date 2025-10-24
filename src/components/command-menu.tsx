@@ -113,8 +113,7 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
   href: item.href,
   ...(typeof item.icon === "string"
     ? { iconImage: item.icon }
-    : { icon: item.icon as React.ComponentType<LucideProps> }
-  ),
+    : { icon: item.icon as React.ComponentType<LucideProps> }),
   openInNewTab: true,
 }));
 
@@ -285,10 +284,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
           <CommandGroup heading="Brand Assets">
             <CommandItem
               onSelect={() => {
-                handleCopyText(
-                  getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff"),
-                  "Copied Mark as SVG"
-                );
+                handleCopyText(getMarkSVG(), "Copied Mark as SVG");
               }}
             >
               <RedMark />
@@ -307,9 +303,7 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
               Copy Logotype as SVG
             </CommandItem>
 
-            <CommandItem
-              onSelect={() => handleOpenLink("/blog/red-brand")}
-            >
+            <CommandItem onSelect={() => handleOpenLink("/blog/red-brand")}>
               <TriangleDashedIcon />
               Brand Guidelines
             </CommandItem>

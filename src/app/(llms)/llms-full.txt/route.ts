@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
 import { SITE_INFO } from "@/config/site";
-import { getAllPosts } from "@/features/blog/data/posts";
+import { getAllPosts } from "@/features/blog/actions";
 import { getLLMText } from "@/features/blog/lib/get-llm-text";
 import { AWARDS } from "@/features/profile/data/awards";
 import { CERTIFICATIONS } from "@/features/profile/data/certifications";
@@ -10,8 +10,6 @@ import { PROJECTS } from "@/features/profile/data/projects";
 import { SOCIAL_LINKS } from "@/features/profile/data/social-links";
 import { TECH_STACK } from "@/features/profile/data/tech-stack";
 import { USER } from "@/features/profile/data/user";
-
-const allPosts = getAllPosts();
 
 const aboutText = `## About
 
@@ -64,6 +62,7 @@ const certificationsText = `## Certifications
 ${CERTIFICATIONS.map((item) => `- [${item.title}](${item.credentialURL})`).join("\n")}`;
 
 async function getBlogContent() {
+  const allPosts = await getAllPosts();
   const text = await Promise.all(
     allPosts.map(
       async (item) =>

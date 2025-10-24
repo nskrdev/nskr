@@ -53,11 +53,11 @@ export const EXPERIENCES: Experience[] = [
         title: "NSS Volunteer",
         employmentPeriod: {
           start: "08.2024",
-        
         },
         employmentType: "Volunteer",
         icon: "idea",
-        description: "Active member of LPU's NSS community working for social welfare and community development.",
+        description:
+          "Active member of LPU's NSS community working for social welfare and community development.",
         skills: ["Community Service", "Leadership"],
         isExpanded: true,
       },

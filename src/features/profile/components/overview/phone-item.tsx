@@ -15,9 +15,7 @@ export function PhoneItem({ phoneNumber }: { phoneNumber: string }) {
   return (
     <IntroItem
       icon={MessageCircleIcon}
-      content={
-        isClient ? `wa.me/${cleanPhone}` : "[WhatsApp protected]"
-      }
+      content={isClient ? `wa.me/${cleanPhone}` : "[WhatsApp protected]"}
       href={isClient ? `https://wa.me/${cleanPhone}` : "#"}
     />
   );

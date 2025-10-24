@@ -1,15 +1,22 @@
+"use client";
+
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { getAllPosts } from "@/features/blog/actions";
 import { PostItem } from "@/features/blog/components/post-item";
-import { getAllPosts } from "@/features/blog/data/posts";
+import type { Post } from "@/features/blog/types/post";
 
 import { Panel, PanelHeader, PanelTitle } from "./panel";
 
 export function Blog() {
-  const allPosts = getAllPosts();
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    getAllPosts().then(setAllPosts);
+  }, []);
 
   return (
     <Panel id="blog">

@@ -54,7 +54,11 @@ const PersonalLogo = ({ className }: { className?: string }) => (
 );
 
 // Map tech stack keys to react-icons
-const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>> | React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<
+  string,
+  | React.ComponentType<React.SVGProps<SVGSVGElement>>
+  | React.ComponentType<{ className?: string }>
+> = {
   // Programming Languages
   python: SiPython,
   ts: SiTypescript,
@@ -136,13 +140,13 @@ export function TeckStack() {
                     rel="noopener noreferrer"
                     aria-label={tech.title}
                     className={cn(
-                      "flex items-center justify-center w-8 h-8 transition-colors",
+                      "flex h-8 w-8 items-center justify-center transition-colors",
                       hasCustomIcon
                         ? "text-foreground hover:text-primary"
                         : "text-muted-foreground hover:text-foreground"
                     )}
                   >
-                    <IconComponent className="w-8 h-8" />
+                    <IconComponent className="h-8 w-8" />
                     <span className="sr-only">{tech.title}</span>
                   </a>
                 </SimpleTooltip>

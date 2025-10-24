@@ -7,15 +7,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Icons } from "@/components/icons";
-import { getPostsByCategory } from "@/features/blog/data/posts";
+import { getPostsByCategory } from "@/features/blog/actions";
 
 export const metadata: Metadata = {
   title: "Components",
   description: "A collection of reusable components.",
 };
 
-export default function Page() {
-  const posts = getPostsByCategory("components");
+export default async function Page() {
+  const posts = await getPostsByCategory("components");
 
   return (
     <div className="min-h-svh">

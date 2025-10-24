@@ -1,16 +1,40 @@
+"use client";
+
 import dayjs from "dayjs";
-import type { Metadata } from "next";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
+import { getAllPosts } from "@/features/blog/actions";
 import { PostItem } from "@/features/blog/components/post-item";
-import { getAllPosts } from "@/features/blog/data/posts";
+import type { Post } from "@/features/blog/types/post";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "A collection of articles on development, design, and ideas.",
+const staggerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
 };
 
 export default function Page() {
-  const allPosts = getAllPosts();
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    getAllPosts().then(setAllPosts);
+  }, []);
 
   return (
     <>
@@ -20,7 +44,7 @@ export default function Page() {
 
       <div className="screen-line-after p-4">
         <p className="font-mono text-sm text-balance text-muted-foreground">
-          {metadata.description}
+          A collection of articles on development, design, and ideas.
         </p>
       </div>
 
@@ -30,20 +54,23 @@ export default function Page() {
           <div className="border-l border-edge"></div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <motion.div
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+          variants={staggerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {allPosts
             .slice()
             .sort((a, b) =>
               dayjs(b.metadata.createdAt).diff(dayjs(a.metadata.createdAt))
             )
             .map((post, index) => (
-              <PostItem
-                key={post.slug}
-                post={post}
-                shouldPreloadImage={index <= 4}
-              />
+              <motion.div key={post.slug} variants={itemVariants}>
+                <PostItem post={post} shouldPreloadImage={index <= 4} />
+              </motion.div>
             ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="h-4" />

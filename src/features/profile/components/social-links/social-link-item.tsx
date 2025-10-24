@@ -20,13 +20,14 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
       target="_blank"
       rel="noopener"
     >
-      <div className="relative size-12 shrink-0 flex items-center justify-center">
+      <div className="relative flex size-12 shrink-0 items-center justify-center">
         {isReactIcon ? (
           // Render react-icon component
-          <div className="flex items-center justify-center size-12 rounded-xl bg-muted/50">
-            {typeof icon === "function" && React.createElement(icon, {
-              className: "size-6 text-foreground",
-            })}
+          <div className="flex size-12 items-center justify-center rounded-xl bg-muted/50">
+            {typeof icon === "function" &&
+              React.createElement(icon, {
+                className: "size-6 text-foreground",
+              })}
           </div>
         ) : (
           // Render image

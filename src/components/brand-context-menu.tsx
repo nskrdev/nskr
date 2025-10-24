@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import { copyText } from "@/utils/copy";
 
-import { getMarkSVG,RedMark } from "./red-mark";
+import { getMarkSVG, RedMark } from "./red-mark";
 import { getWordmarkSVG } from "./red-wordmark";
 import {
   ContextMenu,
@@ -26,7 +26,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
       <ContextMenuContent className="w-64">
         <ContextMenuItem
           onClick={() => {
-            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff");
+            const svg = getMarkSVG();
             copyText(svg);
             toast.success("Copied Mark as SVG");
           }}

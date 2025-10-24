@@ -11,20 +11,20 @@ import { MDX } from "@/components/mdx";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/typography";
 import { SITE_INFO } from "@/config/site";
-import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts";
-import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions";
-import { PostShareMenu } from "@/features/blog/components/post-share-menu";
 import {
   findNeighbour,
   getAllPosts,
   getPostBySlug,
-} from "@/features/blog/data/posts";
+} from "@/features/blog/actions";
+import { PostKeyboardShortcuts } from "@/features/blog/components/post-keyboard-shortcuts";
+import { LLMCopyButtonWithViewOptions } from "@/features/blog/components/post-page-actions";
+import { PostShareMenu } from "@/features/blog/components/post-share-menu";
 import type { Post } from "@/features/blog/types/post";
 import { USER } from "@/features/profile/data/user";
 import { cn } from "@/lib/utils";
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -36,7 +36,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return notFound();
@@ -101,7 +101,7 @@ export default async function Page({
   }>;
 }) {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -109,8 +109,8 @@ export default async function Page({
 
   const toc = getTableOfContents(post.content);
 
-  const allPosts = getAllPosts();
-  const { previous, next } = findNeighbour(allPosts, slug);
+  const allPosts = await getAllPosts();
+  const { previous, next } = await findNeighbour(allPosts, slug);
 
   return (
     <>

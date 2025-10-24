@@ -1,13 +1,13 @@
-# [your-domain.com](https://your-domain.com)
+# [nskr.me](https://nskr.me)
 
-A minimal portfolio, component registry, and blog to showcase your work and projects.
+A minimal portfolio, component registry, and blog to showcase my work as a Design Engineer.
 
-Check out the live site: [your-domain.com](https://your-domain.com)
+Check out the live site: [nskr.me](https://nskr.me)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://your-cdn.com/images/screenshot-desktop-dark.webp">
-  <source media="(prefers-color-scheme: light)" srcset="https://your-cdn.com/images/screenshot-desktop-light.webp">
-  <img src="https://your-cdn.com/images/screenshot-desktop-light.webp" alt="Portfolio Screenshot">
+  <source media="(prefers-color-scheme: dark)" srcset="https://nskr.me/images/screenshot-desktop-dark.webp">
+  <source media="(prefers-color-scheme: light)" srcset="https://nskr.me/images/screenshot-desktop-light.webp">
+  <img src="https://nskr.me/images/screenshot-desktop-light.webp" alt="Portfolio Screenshot">
 </picture>
 
 ## Overview
@@ -58,15 +58,11 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Customization
 
-This is Red's personal portfolio website showcasing AI engineering and DevOps expertise.
-2. Replace all personal information with your own details
-3. Update images, social links, and project information
-4. Customize the blog content or remove it entirely
-5. Deploy to your preferred hosting platform
+This is Red's personal portfolio website showcasing AI engineering and DevOps expertise. 2. Replace all personal information with your own details 3. Update images, social links, and project information 4. Customize the blog content or remove it entirely 5. Deploy to your preferred hosting platform
 
 ## Star History
 
-[![Star History](https://starchart.cc/your-username/your-repo.svg?variant=adaptive)](https://starchart.cc/your-username/your-repo)
+[![Star History](https://starchart.cc/nskrdev/nskr.svg?variant=adaptive)](https://starchart.cc/nskrdev/nskr)
 
 ## Acknowledgments
 
