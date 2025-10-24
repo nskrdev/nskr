@@ -1,9 +1,7 @@
 import { InfinityIcon } from "lucide-react";
-import { Suspense } from "react";
 import React from "react";
 
 import { getIcon } from "@/components/icons";
-import { Markdown } from "@/components/markdown";
 import {
   CollapsibleChevronsIcon,
   CollapsibleContent,
@@ -100,9 +98,7 @@ export function ExperiencePositionItem({
         <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-fade-up data-[state=open]:animate-collapsible-fade-down">
           {position.description && (
             <Prose className="pt-2 pl-9">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Markdown>{position.description}</Markdown>
-              </Suspense>
+              <p>{position.description}</p>
             </Prose>
           )}
 

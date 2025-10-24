@@ -263,7 +263,7 @@ export const TECH_STACK: TechStack[] = [
     theme: true,
   },
   {
-    key: "linux",
+    key: "linux-arch",
     title: "Linux (Arch)",
     displayName: "Linux",
     href: "https://archlinux.org/",

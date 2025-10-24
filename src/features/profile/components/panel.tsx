@@ -44,17 +44,19 @@ function Panel({
 function PanelHeader({
   className,
   collapsible,
+  children,
   ...props
 }: React.ComponentProps<"div"> & { collapsible?: boolean }) {
   return (
     <div
       data-slot="panel-header"
       className={cn(
-        "screen-line-after flex items-center justify-between px-4",
+        "screen-line-after flex items-center justify-between px-4 py-4",
         className
       )}
       {...props}
     >
+      {children}
       {collapsible && (
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="sm" className="ml-auto">

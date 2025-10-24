@@ -16,7 +16,7 @@ export function Nav({
   return (
     <nav
       data-active-id={activeId}
-      className={cn("flex items-center gap-4", className)}
+      className={cn("flex items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4", className)}
     >
       {items.map(({ title, href }) => {
         const active =
@@ -44,7 +44,7 @@ export function NavItem({
   return (
     <Link
       className={cn(
-        "font-mono text-sm font-medium text-muted-foreground transition-[color] duration-300",
+        "font-mono text-xs sm:text-sm font-medium text-muted-foreground transition-[color] duration-300 whitespace-nowrap",
         active && "text-foreground"
       )}
       {...props}
