@@ -151,7 +151,14 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "linux",
-    title: "Linux (Arch)",
+    title: "Linux",
+    href: "https://www.linux.org/",
+    categories: ["Tools"],
+    theme: true,
+  },
+  {
+    key: "arch-linux",
+    title: "Arch Linux",
     href: "https://archlinux.org/",
     categories: ["Tools"],
     theme: true,
@@ -168,12 +175,6 @@ export const TECH_STACK: TechStack[] = [
     key: "aws",
     title: "AWS",
     href: "https://aws.amazon.com/",
-    categories: ["Cloud"],
-  },
-  {
-    key: "aws-ecs",
-    title: "AWS ECS",
-    href: "https://aws.amazon.com/ecs/",
     categories: ["Cloud"],
   },
 
@@ -239,12 +240,7 @@ export const TECH_STACK: TechStack[] = [
     href: "https://restfulapi.net/",
     categories: ["Other"],
   },
-  {
-    key: "google-sheets",
-    title: "Google Sheets API",
-    href: "https://developers.google.com/sheets/api",
-    categories: ["Tools"],
-  },
+
   {
     key: "slack",
     title: "Slack API",
@@ -267,18 +263,11 @@ export const TECH_STACK: TechStack[] = [
     theme: true,
   },
   {
-    key: "notion",
-    title: "Notion",
-    href: "https://www.notion.so/",
+    key: "linux",
+    title: "Linux (Arch)",
+    displayName: "Linux",
+    href: "https://archlinux.org/",
     categories: ["Tools"],
     theme: true,
-  },
-
-  // Personal Brand
-  {
-    key: "red-brand",
-    title: "RED Brand",
-    href: "https://nskr.me", // Your portfolio URL
-    categories: ["Other"],
   },
 ];

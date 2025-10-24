@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { Markdown } from "@/components/markdown";
 import { Prose } from "@/components/ui/typography";
 import { USER } from "@/features/profile/data/user";
@@ -13,7 +15,9 @@ export function About() {
 
       <PanelContent>
         <Prose>
-          <Markdown>{USER.about}</Markdown>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Markdown>{USER.about}</Markdown>
+          </Suspense>
         </Prose>
       </PanelContent>
     </Panel>

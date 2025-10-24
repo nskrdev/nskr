@@ -12,6 +12,8 @@ export type TechStack = {
   key: string;
   /** Display name of the technology. */
   title: string;
+  /** Clean display name for UI (optional, falls back to title). */
+  displayName?: string;
   /** Official website URL. */
   href: string;
   /** Category tags used for grouping/filtering. */

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { EXPERIENCES } from "../../data/experiences";
-import { Panel, PanelHeader, PanelTitle } from "../panel";
+import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
 import { ExperienceItem } from "./experience-item";
 
 export function Experiences() {
@@ -11,11 +11,13 @@ export function Experiences() {
         <PanelTitle>Experience</PanelTitle>
       </PanelHeader>
 
-      <div className="pr-2 pl-4">
-        {EXPERIENCES.map((experience) => (
-          <ExperienceItem key={experience.id} experience={experience} />
-        ))}
-      </div>
+      <PanelContent>
+        <div className="pr-2 pl-4">
+          {EXPERIENCES.map((experience) => (
+            <ExperienceItem key={experience.id} experience={experience} />
+          ))}
+        </div>
+      </PanelContent>
     </Panel>
   );
 }

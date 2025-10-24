@@ -1,7 +1,7 @@
 import { CollapsibleList } from "@/components/collapsible-list";
 
 import { PROJECTS } from "../../data/projects";
-import { Panel, PanelHeader, PanelTitle } from "../panel";
+import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
 import { ProjectItem } from "./project-item";
 
 export function Projects() {
@@ -16,11 +16,13 @@ export function Projects() {
         </PanelTitle>
       </PanelHeader>
 
-      <CollapsibleList
-        items={PROJECTS}
-        max={4}
-        renderItem={(item) => <ProjectItem project={item} />}
-      />
+      <PanelContent>
+        <CollapsibleList
+          items={PROJECTS}
+          max={4}
+          renderItem={(item) => <ProjectItem project={item} />}
+        />
+      </PanelContent>
     </Panel>
   );
 }

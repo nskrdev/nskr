@@ -1,4 +1,5 @@
 import { FileCheckIcon } from "lucide-react";
+import { Suspense } from "react";
 
 import { Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
@@ -100,7 +101,9 @@ export function EducationItem({
           <CollapsibleContent className="group overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
             <div className="border-t border-dashed border-edge">
               <Prose className="p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
-                <Markdown>{education.description}</Markdown>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Markdown>{education.description}</Markdown>
+                </Suspense>
               </Prose>
             </div>
           </CollapsibleContent>

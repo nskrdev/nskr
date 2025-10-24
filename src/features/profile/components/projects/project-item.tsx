@@ -1,8 +1,9 @@
 import { InfinityIcon, LinkIcon } from "lucide-react";
 import Image from "next/image";
+import { Suspense } from "react";
 import React from "react";
 
-import { Icons } from "@/components/icons";
+import { getIcon,Icons } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
 import {
   CollapsibleChevronsIcon,
@@ -16,6 +17,7 @@ import { Prose } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
 import { addQueryParams } from "@/utils/url";
 
+import { TECH_STACK } from "../../data/tech-stack";
 import type { Project } from "../../types/projects";
 
 export function ProjectItem({
@@ -106,17 +108,50 @@ export function ProjectItem({
             <div className="space-y-4 p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
               {project.description && (
                 <Prose>
-                  <Markdown>{project.description}</Markdown>
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Markdown>{project.description}</Markdown>
+                  </Suspense>
                 </Prose>
               )}
 
               {project.skills.length > 0 && (
                 <ul className="flex flex-wrap gap-1.5">
-                  {project.skills.map((skill, index) => (
-                    <li key={index} className="flex">
-                      <Tag>{skill}</Tag>
-                    </li>
-                  ))}
+                  {project.skills.map((skill, index) => {
+                    const techItem = TECH_STACK.find(
+                      (item) =>
+                        item.title === skill ||
+                        item.displayName === skill ||
+                        item.key === skill.toLowerCase()
+                    );
+                    const iconKey = techItem?.key || skill.toLowerCase();
+                    const displayName =
+                      techItem?.displayName || techItem?.title || skill;
+                    const icon = getIcon(iconKey);
+
+                    return (
+                      <li key={index} className="flex">
+                        <Tag className="flex items-center gap-1">
+                          {icon && techItem?.href ? (
+                            <SimpleTooltip
+                              content={`Visit ${displayName} website`}
+                            >
+                              <a
+                                href={techItem.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block"
+                              >
+                                {icon}
+                              </a>
+                            </SimpleTooltip>
+                          ) : (
+                            icon
+                          )}
+                          {displayName}
+                        </Tag>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </div>

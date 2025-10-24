@@ -1,6 +1,8 @@
 import { InfinityIcon } from "lucide-react";
+import { Suspense } from "react";
 import React from "react";
 
+import { getIcon } from "@/components/icons";
 import { Markdown } from "@/components/markdown";
 import {
   CollapsibleChevronsIcon,
@@ -10,9 +12,11 @@ import {
 } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
 import { Tag } from "@/components/ui/tag";
+import { SimpleTooltip } from "@/components/ui/tooltip";
 import { Prose } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
+import { TECH_STACK } from "../../data/tech-stack";
 import type { ExperiencePosition } from "../../types/experiences";
 import { ExperienceIcon } from "./experience-position-icon";
 
@@ -96,17 +100,49 @@ export function ExperiencePositionItem({
         <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-fade-up data-[state=open]:animate-collapsible-fade-down">
           {position.description && (
             <Prose className="pt-2 pl-9">
-              <Markdown>{position.description}</Markdown>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Markdown>{position.description}</Markdown>
+              </Suspense>
             </Prose>
           )}
 
           {Array.isArray(position.skills) && position.skills.length > 0 && (
             <ul className="flex flex-wrap gap-1.5 pt-2 pl-9">
-              {position.skills.map((skill, index) => (
-                <li key={index} className="flex">
-                  <Tag>{skill}</Tag>
-                </li>
-              ))}
+              {position.skills.map((skill, index) => {
+                // Find matching tech stack item
+                const techItem = TECH_STACK.find(
+                  (item) =>
+                    item.title === skill ||
+                    item.displayName === skill ||
+                    item.key === skill.toLowerCase()
+                );
+                const iconKey = techItem?.key || skill.toLowerCase();
+                const displayName =
+                  techItem?.displayName || techItem?.title || skill;
+                const icon = getIcon(iconKey);
+
+                return (
+                  <li key={index} className="flex">
+                    <Tag className="flex items-center gap-1">
+                      {icon && techItem?.href ? (
+                        <SimpleTooltip content={`Visit ${displayName} website`}>
+                          <a
+                            href={techItem.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block"
+                          >
+                            {icon}
+                          </a>
+                        </SimpleTooltip>
+                      ) : (
+                        icon
+                      )}
+                      {displayName}
+                    </Tag>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </CollapsibleContent>
