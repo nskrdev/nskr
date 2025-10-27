@@ -9,7 +9,6 @@
 - **Lint with fixes**: `pnpm lint:fix`
 - **Format check**: `pnpm format:check`
 - **Format and write**: `pnpm format:write`
-- **Registry build**: `pnpm registry:build`
 - **Testing**: `pnpm test` (currently no tests configured)
 
 ## Code Style Guidelines
@@ -33,22 +32,3 @@
 - **Hooks**: camelCase with `use` prefix (e.g., `useConfig`)
 - **Files**: kebab-case (e.g., `panel-header.tsx`)
 - **Types**: PascalCase with descriptive names
-
-### Component Patterns
-
-- Use `cva` (class-variance-authority) for component variants
-- Include `data-slot` attributes for component identification
-- Follow shadcn/ui patterns with zinc color scheme
-- Use `cn()` utility for conditional class merging
-
-### Error Handling
-
-- Log errors to console for debugging
-- Use try-catch blocks sparingly, prefer graceful degradation
-- Validate props and provide sensible defaults
-
-### State Management
-
-- Use Jotai atoms for global state
-- Prefer local state with React hooks when possible
-- Use `atomWithStorage` for persistent configuration

@@ -212,6 +212,7 @@ const pngIconMap: Record<string, string> = {
   keras: "keras",
   "scikit-learn": "scikit-learn",
   opencv: "OpenCV",
+  pandas: "Pandas",
   numpy: "NumPy",
   flask: "Flask",
   nodejs: "node",

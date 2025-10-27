@@ -262,12 +262,12 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Cloud"],
     theme: true,
   },
-  {
-    key: "linux-arch",
-    title: "Linux (Arch)",
-    displayName: "Linux",
-    href: "https://archlinux.org/",
-    categories: ["Tools"],
-    theme: true,
-  },
+  // {
+  //   key: "linux-arch",
+  //   title: "Linux (Arch)",
+  //   displayName: "Linux",
+  //   href: "https://archlinux.org/",
+  //   categories: ["Tools"],
+  //   theme: true,
+  // },
 ];

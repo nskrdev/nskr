@@ -1,0 +1,309 @@
+---
+title: "Contributing to Omarchy: My First Major Open Source Contribution"
+description: "From installing a beautiful Linux distro to becoming a contributor—my journey with Omarchy and lessons learned from open source collaboration."
+image: "/og/simple?title=Contributing to Omarchy: My First Major Open Source Contribution"
+category: "open-source"
+icon: "git-pull-request"
+new: true
+createdAt: "2025-10-21"
+updatedAt: "2025-10-21"
+---
+
+# Contributing to Omarchy: My First Major Open Source Contribution
+
+When **DHH** (David Heinemeier Hansson) released **Omarchy**—a beautiful, modern, and opinionated Arch Linux distribution—I was immediately captivated. As someone who had been customizing Arch Linux for years, seeing a polished distribution that emphasized aesthetics and developer experience felt like the perfect daily driver.
+
+## Discovery: The HYPE is Real
+
+Omarchy isn't just another Linux distro—it's a **carefully curated experience** built on Arch Linux with Hyprland, designed for developers who value both form and function. When I first saw it trending on Hacker News, I knew I had to try it.
+
+### What Makes Omarchy Special
+
+- **Hyprland compositor** - Smooth, modern Wayland experience
+- **Opinionated defaults** - Sensible configurations out of the box
+- **Beautiful aesthetics** - Every detail matters
+- **Developer-focused** - Built by developers, for developers
+- **Active community** - Rapid development and responsive maintainers
+
+## Installation: The Learning Curve
+
+### Initial Challenges
+
+Installing Omarchy on a clean minimal Arch setup wasn't straightforward:
+
+```bash
+# Keyring issues were common
+sudo pacman -Sy archlinux-keyring
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+
+# Package conflicts needed resolution
+sudo pacman -Syu --overwrite '*'
+```
+
+### The Installation Process
+
+```bash
+# Clone the Omarchy repository
+git clone https://github.com/omahacodeschool/omarchy.git
+cd omarchy
+
+# Run the installation script
+./install.sh
+
+# Configure shell (I prefer zsh over fish)
+chsh -s /usr/bin/zsh
+```
+
+The installation script handles most of the heavy lifting, but understanding what it's doing under the hood helps troubleshoot issues.
+
+## Customization: Making It Mine
+
+### Shell Configuration
+
+One of my first customizations was configuring the **bash shell** to display the current directory path properly:
+
+```bash
+# .bashrc customization
+PS1='\e[1;34m\u\e[0m@\e[1;32m\h\e[0m:\e[1;33m\w\e[0m$ '
+
+# Show git branch in prompt
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+PS1='\e[1;34m\u\e[0m@\e[1;32m\h\e[0m:\e[1;33m\w\e[0m \e[1;36m$(parse_git_branch)\e[0m$ '
+```
+
+### Development Environment Setup
+
+Omarchy comes with great defaults, but I added my development essentials:
+
+```bash
+# Install development tools
+sudo pacman -S docker docker-compose python nodejs npm
+
+# Docker permissions (common issue)
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Python virtual environments
+python -m venv ~/.venvs/default
+source ~/.venvs/default/bin/activate
+
+# Node.js setup
+npm config set prefix ~/.npm-global
+export PATH=~/.npm-global/bin:$PATH
+```
+
+### Browser Testing
+
+I experimented with different browsers to find what worked best on Omarchy:
+
+- **Chrome** - My primary browser, works flawlessly
+- **Comet browser** - Testing phase, interesting Wayland integration
+- **Firefox** - Solid alternative with great Wayland support
+
+## Contributing: Finding My Place
+
+After using Omarchy daily for a few weeks, I noticed areas where I could contribute. The **menu functionality** needed improvements, and I had ideas.
+
+### My First Pull Request
+
+The contribution process was straightforward but taught me valuable lessons about open source collaboration:
+
+#### 1. Fork and Clone
+
+```bash
+# Fork the repository on GitHub
+git clone https://github.com/YOUR_USERNAME/omarchy.git
+cd omarchy
+git remote add upstream https://github.com/omahacodeschool/omarchy.git
+```
+
+#### 2. Create a Feature Branch
+
+```bash
+git checkout -b feature/menu-improvements
+```
+
+#### 3. Make Meaningful Changes
+
+I focused on:
+- Improving menu navigation
+- Adding keyboard shortcuts
+- Fixing edge cases in menu behavior
+- Enhancing accessibility
+
+#### 4. Test Thoroughly
+
+```bash
+# Test on clean Omarchy installation
+./test-menu.sh
+
+# Test edge cases
+# Test with different screen resolutions
+# Test keyboard navigation
+```
+
+#### 5. Submit Pull Request
+
+The most nerve-wracking part—putting your code out there for review.
+
+## Code Review: The Real Learning
+
+### Feedback Received
+
+The Omarchy maintainers provided **constructive feedback** that made me a better developer:
+
+1. **Code style consistency** - Following project conventions
+2. **Performance considerations** - Optimizing shell scripts
+3. **Documentation requirements** - Clear comments and README updates
+4. **Testing coverage** - Ensuring changes don't break existing functionality
+
+### Iteration Process
+
+```bash
+# Address feedback
+git add .
+git commit -m "refactor: improve menu performance based on review feedback"
+
+# Keep branch updated
+git fetch upstream
+git rebase upstream/main
+
+# Push changes
+git push origin feature/menu-improvements --force-with-lease
+```
+
+### The Merge
+
+When my PR was finally merged, it felt incredible. Seeing my code in a project used by thousands of developers worldwide was validation of months of learning.
+
+## Lessons Learned
+
+### Technical Lessons
+
+1. **Read existing code first** - Understand patterns before contributing
+2. **Small PRs are better** - Easier to review and merge
+3. **Tests matter** - Untested code will be rejected
+4. **Documentation is code** - Update docs with every change
+
+### Collaboration Lessons
+
+1. **Be responsive** - Address feedback promptly
+2. **Stay humble** - Maintainers know the codebase better
+3. **Ask questions** - Better to clarify than assume
+4. **Be patient** - Reviews take time
+
+### Community Insights
+
+The Omarchy community taught me:
+- **Respect maintainer decisions** - They have a vision
+- **Contribute consistently** - One-off PRs are great, but regular contributions build trust
+- **Help others** - Answer issues, help newcomers
+- **Share experiences** - Blog posts and tutorials help the ecosystem
+
+## Omarchy in My Daily Workflow
+
+### Development Setup
+
+```bash
+# Morning routine
+cd ~/projects/skinseoul
+code . # VS Code/Cursor
+docker-compose up -d
+npm run dev
+```
+
+### Productivity Tools
+
+Omarchy's Wayland/Hyprland setup with proper configurations made my workflow seamless:
+
+- **Rofi** - Application launcher
+- **Waybar** - Status bar
+- **Kitty/Alacritty** - Terminal emulators
+- **Docker** - Containerized development
+
+### Gaming on Omarchy
+
+Yes, Omarchy handles gaming well! **CS2** (Counter-Strike 2) runs smoothly with proper graphics drivers.
+
+## Challenges and Solutions
+
+### 1. Package Conflicts
+
+```bash
+# Solution: Use overwrite flag carefully
+sudo pacman -S package-name --overwrite '/path/to/conflicting/file'
+```
+
+### 2. Docker Permission Issues
+
+```bash
+# Solution: Proper group setup
+sudo usermod -aG docker $USER
+# Log out and back in
+```
+
+### 3. Python Version Management
+
+Building Python from source when needed:
+
+```bash
+# Build Python 3.12
+wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tgz
+tar -xf Python-3.12.0.tgz
+cd Python-3.12.0
+./configure --enable-optimizations
+make -j $(nproc)
+sudo make altinstall
+```
+
+## The Broader Impact
+
+Contributing to Omarchy opened doors:
+
+- **Confidence in open source** - Now I contribute to other projects regularly
+- **Better code quality** - Code review taught me best practices
+- **Community connections** - Met amazing developers
+- **Portfolio piece** - Demonstrates real-world collaboration skills
+
+## Ethical Considerations
+
+It's worth noting that while Omarchy is technically impressive, there have been **discussions about the ethics** around its branding and positioning in the Linux community. These conversations are important and show that open source isn't just about code—it's about community values and respect for existing work.
+
+## What's Next?
+
+I'm planning to:
+
+- **Continue contributing** to Omarchy's development
+- **Document my configurations** to help others
+- **Build tools** that enhance the Omarchy experience
+- **Help newcomers** get started with the distro
+
+## Advice for Aspiring Contributors
+
+If you want to contribute to open source projects like Omarchy:
+
+1. **Use the project daily** - You'll find real issues to fix
+2. **Start small** - Documentation and bug fixes are valuable
+3. **Read contributing guidelines** - Every project has standards
+4. **Be professional** - Treat it like a real job
+5. **Don't give up** - First PRs are often rejected—learn and try again
+6. **Build in public** - Share your journey on GitHub and blogs
+
+## Key Takeaways
+
+- Omarchy is a beautiful, developer-focused Linux distribution worth trying
+- Open source contribution is accessible to everyone
+- Code review feedback makes you a better developer
+- Community involvement enhances technical skills
+- Daily usage reveals contribution opportunities
+- Small, consistent contributions matter more than big one-offs
+
+Omarchy transformed how I think about Linux distributions and open source contribution. It's not just a distro—it's a community of developers building something exceptional together.
+
+---
+
+*Are you using Omarchy? Have you contributed to open source? Share your experiences and let's connect!*

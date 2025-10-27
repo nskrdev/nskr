@@ -1,0 +1,369 @@
+---
+title: "Building Custom TypeScript Nodes in N8N: A Deep Dive"
+description: "How I built production-ready custom TypeScript nodes for N8N to extend automation capabilities beyond standard integrations."
+image: "/og/simple?title=Building Custom TypeScript Nodes in N8N: A Deep Dive"
+category: "automation"
+icon: "code"
+new: true
+createdAt: "2025-10-28"
+updatedAt: "2025-10-28"
+---
+
+# Building Custom TypeScript Nodes in N8N: A Deep Dive
+
+While N8N offers **6000+ workflow templates** and hundreds of pre-built nodes, sometimes you need custom functionality that doesn't exist out of the box. At **SkinSeoul**, I found myself building custom **TypeScript Code nodes** to handle unique business logic that standard nodes couldn't solve.
+
+## When to Build Custom Nodes
+
+Before diving into custom development, ask yourself:
+
+- Can this be solved with existing nodes and expressions?
+- Will this logic be reused across multiple workflows?
+- Do I need performance optimizations beyond standard nodes?
+
+If the answer to any of these is "yes," custom nodes might be your solution.
+
+## Setting Up Your Development Environment
+
+### Prerequisites
+
+Clone your N8N instance:
+```bash
+git clone https://github.com/n8n-io/n8n.git
+cd n8n
+```
+
+Install dependencies:
+```bash
+npm install
+```
+
+Start in development mode:
+```bash
+npm run dev
+```
+
+### Project Structure
+
+```
+custom-nodes/
+├── src/
+│   ├── nodes/
+│   │   └── CustomProcessor/
+│   │       ├── CustomProcessor.node.ts
+│   │       └── CustomProcessor.node.json
+│   └── credentials/
+├── package.json
+└── tsconfig.json
+```
+
+## Building a Real-World Example
+
+At SkinSeoul, I built a custom node for **advanced order validation** that checked multiple data sources before processing.
+
+### The Node Interface
+
+```typescript
+import {
+  IExecuteFunctions,
+  INodeExecutionData,
+  INodeType,
+  INodeTypeDescription,
+} from 'n8n-workflow';
+
+export class OrderValidator implements INodeType {
+  description: INodeTypeDescription = {
+    displayName: 'Order Validator',
+    name: 'orderValidator',
+    group: ['transform'],
+    version: 1,
+    description: 'Validates order data against multiple criteria',
+    defaults: {
+      name: 'Order Validator',
+    },
+    inputs: ['main'],
+    outputs: ['main', 'invalid'],
+    properties: [
+      {
+        displayName: 'Validation Rules',
+        name: 'rules',
+        type: 'collection',
+        default: {},
+        options: [
+          {
+            displayName: 'Check Currency',
+            name: 'checkCurrency',
+            type: 'boolean',
+            default: true,
+          },
+          {
+            displayName: 'Minimum Amount',
+            name: 'minAmount',
+            type: 'number',
+            default: 0,
+          },
+        ],
+      },
+    ],
+  };
+
+  async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+    const items = this.getInputData();
+    const validOrders: INodeExecutionData[] = [];
+    const invalidOrders: INodeExecutionData[] = [];
+
+    const rules = this.getNodeParameter('rules', 0) as {
+      checkCurrency: boolean;
+      minAmount: number;
+    };
+
+    for (let i = 0; i < items.length; i++) {
+      const order = items[i].json;
+
+      try {
+        // Currency validation
+        if (rules.checkCurrency) {
+          const validCurrencies = ['SGD', 'AED', 'JPY', 'USD'];
+          if (!validCurrencies.includes(order.currency as string)) {
+            throw new Error(`Invalid currency: ${order.currency}`);
+          }
+        }
+
+        // Amount validation
+        if (rules.minAmount && (order.total as number) < rules.minAmount) {
+          throw new Error(`Order below minimum amount`);
+        }
+
+        validOrders.push(items[i]);
+      } catch (error) {
+        invalidOrders.push({
+          json: {
+            ...order,
+            error: error.message,
+          },
+        });
+      }
+    }
+
+    return [validOrders, invalidOrders];
+  }
+}
+```
+
+## Advanced Patterns
+
+### 1. Batch Processing for Performance
+
+When processing large datasets, batch operations are crucial:
+
+```typescript
+async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+  const items = this.getInputData();
+  const batchSize = 50;
+  const results: INodeExecutionData[] = [];
+
+  for (let i = 0; i < items.length; i += batchSize) {
+    const batch = items.slice(i, i + batchSize);
+
+    // Process batch in parallel
+    const batchResults = await Promise.all(
+      batch.map(item => this.processItem(item))
+    );
+
+    results.push(...batchResults);
+  }
+
+  return [results];
+}
+```
+
+### 2. External API Integration
+
+Integrating with custom APIs requires proper error handling:
+
+```typescript
+private async fetchExternalData(
+  this: IExecuteFunctions,
+  endpoint: string
+): Promise<any> {
+  const credentials = await this.getCredentials('customApi');
+
+  try {
+    const response = await this.helpers.request({
+      method: 'GET',
+      url: `${credentials.baseUrl}${endpoint}`,
+      headers: {
+        'Authorization': `Bearer ${credentials.apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      json: true,
+    });
+
+    return response;
+  } catch (error) {
+    if (error.statusCode === 429) {
+      // Rate limiting - implement exponential backoff
+      await this.helpers.sleep(5000);
+      return this.fetchExternalData(endpoint);
+    }
+    throw error;
+  }
+}
+```
+
+### 3. State Management
+
+For workflows that need to maintain state across executions:
+
+```typescript
+async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+  // Get workflow static data
+  const staticData = this.getWorkflowStaticData('node');
+
+  // Initialize counter if doesn't exist
+  if (staticData.processedOrders === undefined) {
+    staticData.processedOrders = 0;
+  }
+
+  // Process items
+  const items = this.getInputData();
+  staticData.processedOrders += items.length;
+
+  // Add metadata to output
+  return [items.map(item => ({
+    json: {
+      ...item.json,
+      totalProcessed: staticData.processedOrders,
+    },
+  }))];
+}
+```
+
+## Testing Custom Nodes
+
+### Unit Testing
+
+```typescript
+import { NodeOperationError } from 'n8n-workflow';
+import { OrderValidator } from '../OrderValidator.node';
+
+describe('OrderValidator', () => {
+  it('should validate correct orders', async () => {
+    const node = new OrderValidator();
+    const mockContext = createMockExecuteContext([
+      { json: { id: 1, currency: 'SGD', total: 100 } },
+    ]);
+
+    const result = await node.execute.call(mockContext);
+
+    expect(result[0]).toHaveLength(1);
+    expect(result[1]).toHaveLength(0);
+  });
+
+  it('should catch invalid currency', async () => {
+    const node = new OrderValidator();
+    const mockContext = createMockExecuteContext([
+      { json: { id: 2, currency: 'INVALID', total: 100 } },
+    ]);
+
+    const result = await node.execute.call(mockContext);
+
+    expect(result[0]).toHaveLength(0);
+    expect(result[1]).toHaveLength(1);
+  });
+});
+```
+
+## Debugging Tips
+
+### 1. Use Console Logging Strategically
+
+```typescript
+console.log('Processing item:', JSON.stringify(item, null, 2));
+```
+
+### 2. Test with Postman First
+
+Before integrating with N8N, test your logic with **Postman** to validate API responses and data structures.
+
+### 3. Error Context Matters
+
+```typescript
+throw new NodeOperationError(
+  this.getNode(),
+  `Failed to process order ${orderId}: ${error.message}`,
+  { itemIndex: i }
+);
+```
+
+## Performance Optimization
+
+### Lessons Learned
+
+1. **Avoid synchronous loops** - Use `Promise.all()` for parallel processing
+2. **Cache API responses** - Don't fetch the same data multiple times
+3. **Limit memory usage** - Process large datasets in chunks
+4. **Use streaming** - For file operations and large payloads
+
+### Before Optimization
+```typescript
+for (const item of items) {
+  const result = await processItem(item); // Slow!
+  results.push(result);
+}
+```
+
+### After Optimization
+```typescript
+const results = await Promise.all(
+  items.map(item => processItem(item)) // Fast!
+);
+```
+
+## Real-World Impact at SkinSeoul
+
+Building custom nodes allowed us to:
+
+- **Reduce workflow complexity** by 60% (fewer nodes needed)
+- **Improve processing speed** from 5s to 0.5s per order
+- **Centralize business logic** for easier maintenance
+- **Enable code reusability** across 20+ workflows
+
+## Tools and Resources
+
+- **TypeScript** - Type safety and better IDE support
+- **N8N Documentation** - Official node development guide
+- **VS Code / Cursor** - My preferred IDE for development
+- **Docker** - For testing in isolated environments
+- **GitHub** - Version control and collaboration
+
+## Common Pitfalls
+
+1. **Not handling errors properly** - Always use try-catch blocks
+2. **Forgetting to return data** - N8N needs proper return structures
+3. **Hardcoding values** - Use node parameters instead
+4. **Ignoring TypeScript types** - Types prevent runtime errors
+5. **Not testing with real data** - Mock data often differs from production
+
+## What's Next?
+
+I'm exploring:
+
+- **AI-powered data transformation nodes**
+- **Multi-agent orchestration** with custom nodes
+- **Real-time streaming data processing**
+- **Contributing custom nodes** to N8N community
+
+## Key Takeaways
+
+- Custom nodes unlock N8N's full potential
+- TypeScript provides type safety and better developer experience
+- Performance optimization requires batch processing and parallel execution
+- Testing is crucial before production deployment
+- Proper error handling saves hours of debugging
+
+Custom TypeScript nodes transformed how we build automation at SkinSeoul, enabling complex business logic that standard nodes couldn't handle.
+
+---
+
+*Have you built custom N8N nodes? What challenges did you face? Share your experiences below!*
