@@ -8,22 +8,23 @@ export function RedMark(props: React.ComponentProps<"svg">) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-          .text-base {
-            font-family: 'VT323', monospace;
-            font-size: 170px;
-            fill: rgba(150, 150, 150, 1);
-          }
-           .text-highlight {
-             font-family: 'VT323', monospace;
-             font-size: 170px;
-             fill: rgba(190, 190, 190, 0.4);
-           }
-        `}
-      </style>
-      <text x="45" y="144">
+      <defs>
+        <style>
+          {`
+            .text-base {
+              font-family: var(--font-vt323), monospace;
+              font-size: 170px;
+              fill: rgba(150, 150, 150, 1);
+            }
+            .text-highlight {
+              font-family: var(--font-vt323), monospace;
+              font-size: 170px;
+              fill: rgba(190, 190, 190, 0.4);
+            }
+          `}
+        </style>
+      </defs>
+      <text x="300" y="144" textAnchor="middle">
         <tspan className="text-base">RED</tspan>
         <tspan className="text-highlight">DY</tspan>
       </text>
@@ -39,7 +40,7 @@ export function getMarkSVG() {
       .text-base { font-family: 'VT323', monospace; font-size: 170px; fill: rgba(150, 150, 150, 1); }
        .text-highlight { font-family: 'VT323', monospace; font-size: 170px; fill: rgba(190, 190, 190, 0.4); }
     </style>
-     <text x="45" y="144">
+     <text x="300" y="144" text-anchor="middle">
        <tspan class="text-base">RED</tspan>
        <tspan class="text-highlight">DY</tspan>
      </text>
