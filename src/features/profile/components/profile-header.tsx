@@ -33,7 +33,7 @@ export function ProfileHeader() {
             <rect y="6.67" width="30" height="6.67" fill="#FFFFFF" />
             {/* Green stripe */}
             <rect y="13.33" width="30" height="6.67" fill="#138808" />
-            {/* Ashoka Chakra (simplified wheel) */}
+            {/* Ashoka Chakra (24-spoked wheel) */}
             <circle
               cx="15"
               cy="10"
@@ -42,11 +42,23 @@ export function ProfileHeader() {
               stroke="#000080"
               strokeWidth="0.5"
             />
-            <g stroke="#000080" strokeWidth="0.3">
-              <line x1="15" y1="7" x2="15" y2="13" />
-              <line x1="12" y1="10" x2="18" y2="10" />
-              <line x1="12.88" y1="7.88" x2="17.12" y2="12.12" />
-              <line x1="17.12" y1="7.88" x2="12.88" y2="12.12" />
+            <g stroke="#000080" strokeWidth="0.25">
+              {Array.from({ length: 24 }).map((_, i) => {
+                const angle = (i * 15 * Math.PI) / 180;
+                const x1 = 15 + 1 * Math.cos(angle);
+                const y1 = 10 + 1 * Math.sin(angle);
+                const x2 = 15 + 3 * Math.cos(angle);
+                const y2 = 10 + 3 * Math.sin(angle);
+                return (
+                  <line
+                    key={i}
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                  />
+                );
+              })}
             </g>
           </svg>
         </SimpleTooltip>
