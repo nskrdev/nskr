@@ -98,7 +98,14 @@ export function ExperiencePositionItem({
         <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-fade-up data-[state=open]:animate-collapsible-fade-down">
           {position.description && (
             <Prose className="pt-2 pl-9">
-              <p>{position.description}</p>
+              <ul>
+                {position.description
+                  .split("\n")
+                  .filter((line) => line.trim().startsWith("-"))
+                  .map((line, index) => (
+                    <li key={index}>{line.trim().substring(1).trim()}</li>
+                  ))}
+              </ul>
             </Prose>
           )}
 
