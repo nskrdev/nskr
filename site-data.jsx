@@ -6,10 +6,10 @@ const SITE_DATA = {
   tagline: "Open Source Contributor",
   location: "India",
   email: "red@nskr.dev",
-  resume: "https://github.com/reddynsk/resumes/raw/main/NSKR_Resume.pdf",
+  resume: "https://github.com/nsk-reddy/resumes/raw/main/NSKR_Resume.pdf",
   socials: [
-    { label: "GitHub", url: "https://github.com/reddynsk" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/nskrdev" },
+    { label: "GitHub", url: "https://github.com/nsk-reddy" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/nsk-reddy" },
     { label: "X", url: "https://x.com/nskrhq" },
     { label: "LeetCode", url: "https://leetcode.com/u/reddynsk/" },
     { label: "Email", url: "mailto:red@nskr.dev" },
@@ -83,7 +83,7 @@ const SITE_DATA = {
         "Supports GitHub Copilot and OpenRouter providers",
       ],
       tags: ["AI Orchestration", "FastAPI", "React", "Python", "Vite", "OAuth"],
-      url: "https://github.com/reddynsk/llm-council",
+      url: "https://github.com/nsk-reddy/llm-council",
     },
     {
       id: "dance-pose",
@@ -98,7 +98,7 @@ const SITE_DATA = {
         "99%+ pose detection accuracy with MediaPipe",
       ],
       tags: ["Python", "Flask", "MediaPipe", "OpenCV", "Docker", "AWS ECS"],
-      url: "https://github.com/reddynsk",
+      url: "https://github.com/nsk-reddy",
     },
     {
       id: "arise",
@@ -113,17 +113,17 @@ const SITE_DATA = {
         "AI-driven suggestions for ATS optimization",
       ],
       tags: ["Python", "NLP", "Scikit-learn", "TF-IDF", "spaCy", "Flask"],
-      url: "https://github.com/reddynsk",
+      url: "https://github.com/nsk-reddy",
     },
   ],
 
   otherProjects: [
-    { title: "Deep Facial Verification", period: "03.2023", tagline: "Siamese Neural Network", tags: ["TensorFlow", "Keras", "CUDA", "Python"], url: "https://github.com/reddynsk" },
-    { title: "Autonomous Disaster Response Agent", period: "09.2025", tagline: "Hackathon · Real-time AI", tags: ["AWS", "Python", "AI Agents"], url: "https://github.com/reddynsk" },
+    { title: "Deep Facial Verification", period: "03.2023", tagline: "Siamese Neural Network", tags: ["TensorFlow", "Keras", "CUDA", "Python"], url: "https://github.com/nsk-reddy" },
+    { title: "Autonomous Disaster Response Agent", period: "09.2025", tagline: "Hackathon · Real-time AI", tags: ["AWS", "Python", "AI Agents"], url: "https://github.com/nsk-reddy" },
     { title: "Omarchy", period: "10.2025 — Present", tagline: "Open-Source Linux Menu System", tags: ["Bash", "Linux", "dmenu"], url: "https://github.com/basecamp/omarchy" },
     { title: "nskr.me", period: "10.2025 — Present", tagline: "Personal portfolio", tags: ["HTML5", "CSS3", "JavaScript"], url: "https://nskr.me" },
-    { title: "n8n Workflow Automation Suite", period: "07—09.2025", tagline: "Production e-commerce automations", tags: ["n8n", "TypeScript", "WooCommerce", "Klaviyo"], url: "https://github.com/reddynsk" },
-    { title: "RAG Playground", period: "2025", tagline: "Retrieval experiments on MCP tools", tags: ["LangChain", "RAG", "MCP"], url: "https://github.com/reddynsk" },
+    { title: "n8n Workflow Automation Suite", period: "07—09.2025", tagline: "Production e-commerce automations", tags: ["n8n", "TypeScript", "WooCommerce", "Klaviyo"], url: "https://github.com/nsk-reddy" },
+    { title: "RAG Playground", period: "2025", tagline: "Retrieval experiments on MCP tools", tags: ["LangChain", "RAG", "MCP"], url: "https://github.com/nsk-reddy" },
   ],
 
   education: [
