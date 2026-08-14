@@ -5,8 +5,8 @@
   "description": "nskr.in — portfolio site on Cloudflare Workers",
   "scripts": {
     "build": "sh build.sh",
-    "dev": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "dev": "npm run build && npx wrangler dev",
+    "deploy": "npm run build && npx wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.123.0"
