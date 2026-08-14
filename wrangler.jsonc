@@ -1,0 +1,25 @@
+{
+	// Assets-only Worker — no "main" script. `npm run build` stages the site
+	// into dist/ first; the repo root is not served directly because it also
+	// contains design explorations and ~30 MB of unused source images.
+	"name": "nskr",
+	"compatibility_date": "2026-08-14",
+	"assets": {
+		"directory": "./dist"
+	},
+
+	// Both must be set explicitly. Adding a "routes" block makes Wrangler
+	// default them to false, which silently kills the workers.dev URL and
+	// per-branch preview URLs.
+	"workers_dev": true,
+	"preview_urls": true
+
+	// Custom domain is attached once nskr.in's nameservers actually point at
+	// Cloudflare. Attaching fails with API error 100117 if the hostname still
+	// has leftover DNS records — delete those under DNS → Records first.
+	//
+	// "routes": [
+	// 	{ "pattern": "nskr.in", "custom_domain": true },
+	// 	{ "pattern": "www.nskr.in", "custom_domain": true }
+	// ]
+}

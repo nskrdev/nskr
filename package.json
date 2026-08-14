@@ -1,0 +1,14 @@
+{
+  "name": "nskr-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "nskr.in — portfolio site on Cloudflare Workers",
+  "scripts": {
+    "build": "sh build.sh",
+    "dev": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.123.0"
+  }
+}
