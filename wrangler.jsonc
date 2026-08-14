@@ -12,14 +12,12 @@
 	// default them to false, which silently kills the workers.dev URL and
 	// per-branch preview URLs.
 	"workers_dev": true,
-	"preview_urls": true
+	"preview_urls": true,
 
-	// Custom domain is attached once nskr.in's nameservers actually point at
-	// Cloudflare. Attaching fails with API error 100117 if the hostname still
-	// has leftover DNS records — delete those under DNS → Records first.
-	//
-	// "routes": [
-	// 	{ "pattern": "nskr.in", "custom_domain": true },
-	// 	{ "pattern": "www.nskr.in", "custom_domain": true }
-	// ]
+	// Attaching fails with API error 100117 if the hostname still has leftover
+	// DNS records — delete those under DNS → Records first.
+	"routes": [
+		{ "pattern": "nskr.in", "custom_domain": true },
+		{ "pattern": "www.nskr.in", "custom_domain": true }
+	]
 }
