@@ -1,0 +1,43 @@
+# Narra Suryakoushik Reddy (NSKR)
+
+> AI Automation Engineer based in India, building agentic automation systems
+> with n8n, LangChain and Python. Currently AI Automations Engineer at Valari
+> Solutions. Open-source contributor, and open to projects.
+
+Reddy turns manual workflows into agentic systems — the kind that run while
+teams sleep. Work sits at the intersection of LLMs, automation and real-world
+infrastructure, with current focus on RAG pipelines and MCP tools.
+
+Contact is by email at red@nskr.dev.
+
+The site is a single page rendered client-side with React, so this file and
+`/llms-full.txt` carry the full text content for agents and crawlers that do
+not execute JavaScript.
+
+## Work
+
+- [Experience](https://nskr.in/#experience): AI Automations Engineer at Valari Solutions (Dec 2025–present, promoted from Junior in Feb 2026); AI Agent Innovations Intern at Skin Seoul (Jul–Sep 2025); NSS volunteer at Lovely Professional University.
+- [Featured projects](https://nskr.in/#featured): LLM Council, Dance Move Insight, ARISE.
+- [More projects](https://nskr.in/#projects): Deep Facial Verification, Autonomous Disaster Response Agent, Omarchy, nskr.me, an n8n workflow automation suite, and a RAG playground.
+
+## Skills
+
+- [Stack](https://nskr.in/#skills): AI/ML (PyTorch, TensorFlow, LangChain, MCP, Ollama, AWS Bedrock), automation (n8n, Python, REST APIs), languages (Python, TypeScript, Go, C++), backend (FastAPI, Flask, Node.js), infrastructure (Docker, Kubernetes, AWS, GCP, Linux) and databases (PostgreSQL, Redis, MongoDB).
+
+## Background
+
+- [Education and certifications](https://nskr.in/#education): MCA specialising in AI & ML at Lovely Professional University; data science at JNTU Hyderabad; BSc Computer Science at Visakha Defence Academy. Certified through HarvardX, Microsoft and CompTIA.
+- [Writing](https://nskr.in/#writing): posts on self-hosting n8n and on building production e-commerce automation.
+
+## Elsewhere
+
+- [GitHub](https://github.com/nsk-reddy)
+- [LinkedIn](https://www.linkedin.com/in/nsk-reddy)
+- [X](https://x.com/nskrhq)
+- [LeetCode](https://leetcode.com/u/reddynsk/)
+- [Résumé (PDF)](https://github.com/nsk-reddy/resumes/raw/main/NSKR_Resume.pdf)
+
+## Optional
+
+- [Full site text](https://nskr.in/llms-full.txt): the complete page content in one file.
+- [Contact](https://nskr.in/#contact): red@nskr.dev.

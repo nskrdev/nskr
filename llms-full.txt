@@ -1,0 +1,170 @@
+# Narra Suryakoushik Reddy — full site text
+
+> The complete text content of nskr.in in one file. The site is rendered
+> client-side with React, so this file exists for agents and crawlers that do
+> not execute scripts. Last updated 20 August 2026.
+
+## Who
+
+Narra Suryakoushik Reddy, who goes by Reddy and by the handle NSKR.
+AI Automation Engineer and open-source contributor, based in India.
+
+- Website: https://nskr.in
+- Email: red@nskr.dev
+- GitHub: https://github.com/nsk-reddy
+- LinkedIn: https://www.linkedin.com/in/nsk-reddy
+- X: https://x.com/nskrhq
+- LeetCode: https://leetcode.com/u/reddynsk/
+- Résumé: https://github.com/nsk-reddy/resumes/raw/main/NSKR_Resume.pdf
+
+I build AI agentic automations for businesses to reduce everyday tedious tasks
+with n8n, LangChain and Python. Enthusiastic about RAG and MCP tools,
+currently learning PostgreSQL and Redis.
+
+## Hero
+
+AI ENGINEER
+
+Automations that ship while you sleep.
+
+I'm Reddy — an AI automation engineer, building agentic systems with n8n,
+LangChain, Python. Open to projects.
+
+## About
+
+I build AI agents that do the boring things so humans don't have to.
+
+My work lives at the intersection of LLMs, automation, and real-world
+infrastructure. I turn messy manual workflows into reliable agentic systems —
+the kind that run while teams sleep.
+
+Currently exploring RAG pipelines, MCP tools, and the craft of making AI
+agents feel less like demos and more like dependable teammates.
+
+By the numbers: 20+ API integrations, 40% of manual work cut, 98% workflow
+success rate, 16 projects shipped.
+
+## Experience
+
+**Valari Solutions** — Dec 2025 to present. Full-time, remote.
+Stack: n8n, Python, TypeScript, LangChain, AI agents.
+
+- *AI Automations Engineer*, Feb 2026 to present. Promoted from Junior AI
+  Automations Engineer. Designing and shipping production AI automation
+  systems end to end.
+- *Junior AI Automations Engineer*, Dec 2025 to Feb 2026. Built n8n workflow
+  automations and AI agent integrations.
+
+**Skin Seoul** — AI Agent Innovations Intern, Jul 2025 to Sep 2025.
+Stack: n8n, TypeScript, Python, WooCommerce, Klaviyo, REST APIs.
+
+- Automated 20+ API integrations and optimised AI agent workflows on n8n,
+  reducing manual tasks by 40%
+- Delivered automated solutions saving teams 15+ hours per week
+- Increased workflow success rate to 98% using real-data analysis
+- Built automation systems for e-commerce operations integrating WooCommerce,
+  Klaviyo and Google Sheets
+- Developed custom TypeScript code nodes for complex workflow logic
+- Implemented multi-currency support (SGD, AED, JPY) and order processing
+  pipelines
+
+**National Service Scheme, Lovely Professional University** — NSS Volunteer,
+Aug 2024 to present. Community service and leadership.
+
+## Featured work
+
+**LLM Council** — Dec 2025 to present. A deliberative democracy for AI models.
+A 3-stage orchestration where GPT-5, Claude, Gemini and Grok debate, vote and
+synthesize collective wisdom. Uses GitHub Copilot free-tier models for
+cost-free access.
+
+- Anonymous peer review to prevent brand bias
+- Colour-coded UI with voting matrix and podium rankings
+- Transparent, locally saved conversation history
+- Supports GitHub Copilot and OpenRouter providers
+
+Stack: AI orchestration, FastAPI, React, Python, Vite, OAuth.
+Source: https://github.com/nsk-reddy/llm-council
+
+**Dance Move Insight** — Sep 2025. Real-time pose analysis API.
+AI-powered REST API for real-time dance pose detection and analysis using
+computer vision. Processes videos up to 100MB across MP4, AVI and MOV.
+
+- Detects 7 dance moves via landmark coordinate analysis
+- Extracts 33 body landmarks with timestamped sequences
+- Deployed on AWS ECS with Docker containerisation
+- 99%+ pose detection accuracy with MediaPipe
+
+Stack: Python, Flask, MediaPipe, OpenCV, Docker, AWS ECS.
+
+**ARISE** — Apr 2025. AI-based Resume Intelligence and Scoring Engine.
+Intelligent resume evaluation system using NLP and ML to match candidates with
+job descriptions.
+
+- 96% accuracy in resume-job fit prediction
+- Semantic similarity via TF-IDF and spaCy
+- LanguageTool API for grammar validation
+- AI-driven suggestions for ATS optimisation
+
+Stack: Python, NLP, scikit-learn, TF-IDF, spaCy, Flask.
+
+## More projects
+
+- **Deep Facial Verification** (Mar 2023) — Siamese neural network.
+  TensorFlow, Keras, CUDA, Python.
+- **Autonomous Disaster Response Agent** (Sep 2025) — hackathon, real-time AI.
+  AWS, Python, AI agents.
+- **Omarchy** (Oct 2025 to present) — open-source Linux menu system.
+  Bash, Linux, dmenu. https://github.com/basecamp/omarchy
+- **nskr.me** (Oct 2025 to present) — personal portfolio.
+  HTML5, CSS3, JavaScript. https://nskr.me
+- **n8n Workflow Automation Suite** (Jul–Sep 2025) — production e-commerce
+  automations. n8n, TypeScript, WooCommerce, Klaviyo.
+- **RAG Playground** (2025) — retrieval experiments on MCP tools.
+  LangChain, RAG, MCP.
+
+## Stack
+
+- **AI / ML:** PyTorch, TensorFlow, Keras, scikit-learn, OpenCV, Pandas,
+  NumPy, LangChain, AWS Bedrock, Ollama, MCP, CUDA
+- **Automation:** n8n, LangChain, Python, REST API, Slack API, Stripe
+- **Languages:** Python, TypeScript, JavaScript, C++, C, Java, Go, Lua, R
+- **Web / frontend:** React, Next.js, React Native, Redux, Tailwind,
+  Material UI, HTML5, CSS3
+- **Backend:** FastAPI, Flask, Node.js, Express, GraphQL, Ruby on Rails
+- **Infra / cloud:** Docker, Kubernetes, AWS, GCP, Firebase, Lambda, Linux,
+  Arch Linux, Bash
+- **Databases:** PostgreSQL, MySQL, MongoDB, Redis, Oracle, Prisma
+- **Tools:** Git, GitHub, VS Code, Cursor, Jupyter, Copilot, Notion, Figma,
+  Framer
+
+## Writing
+
+- **How I Hosted n8n on My Own Domain as a Student** (16 Nov 2025) — from
+  cloud nightmares to hosting n8n at n8n.nskr.dev with DigitalOcean student
+  credits.
+- **Building Production-Ready E-commerce Automation with n8n** (11 Nov 2025) —
+  lessons from automating order processing, currency handling and customer
+  workflows at scale.
+
+## Education
+
+- **Lovely Professional University** — Master of Computer Application (MCA),
+  Aug 2024 to present. Specialising in AI & ML.
+- **JNTU Hyderabad** — Data Science using Python, Sep 2021 to Mar 2023.
+  Practical data science.
+- **Visakha Defence Academy** — BSc Computer Science, Jun 2019 to Apr 2023.
+  CS fundamentals.
+
+## Certifications
+
+- **HarvardX (edX)** — Data Science Capstone, Jul 2025
+- **Microsoft, via LinkedIn Learning** — Career Essentials in System
+  Administration, Jan 2023
+- **CompTIA, via LinkedIn Learning** — Ethical Hacking, Dec 2022
+
+## Contact
+
+Got a hard problem? Let's build it.
+
+Email: red@nskr.dev

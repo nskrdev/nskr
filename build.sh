@@ -12,6 +12,11 @@ mkdir -p dist/uploads/logos
 
 cp index.html site.css avatar.png dist/
 
+# Crawler and agent files. The page is rendered client-side, so anything that
+# does not run JavaScript sees an empty <div id="root"> - these carry the
+# actual content for search engines and AI assistants.
+cp robots.txt sitemap.xml llms.txt llms-full.txt dist/
+
 # The five JSX modules index.html pulls in, in load order.
 cp site-data.jsx anim-utils.jsx hero-canvas.jsx ghibli-character.jsx site-sections.jsx dist/
 
