@@ -12,6 +12,10 @@ mkdir -p dist/uploads/logos
 
 cp index.html site.css avatar.png dist/
 
+# /gym-master-plan — SR Gym drawing set, AES-GCM encrypted at rest (unlock key
+# never stored here); the file is the password gate + ciphertext in one page.
+cp gym-master-plan.html dist/
+
 # The five JSX modules index.html pulls in, in load order.
 cp site-data.jsx anim-utils.jsx hero-canvas.jsx ghibli-character.jsx site-sections.jsx dist/
 
